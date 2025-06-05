@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MKFILMSHORROR - Gruselige Highlights 2025</title>
+
+    <!-- Horror-Font einbinden -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Blutspritzer/Nebeleffekte im Hintergrund -->
+    <div class="horror-bg-overlay"></div>
+    <div class="background-animation">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-container">
+                <h1 class="logo">MKFILMSHORROR</h1>
+                <div class="logo-underline"></div>
+            </div>
+            <p class="tagline">10 schaurige Alpträume 2025 • Nur für Mutige</p>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">Filme</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">HD</span>
+                    <span class="stat-label">Streaming</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">👻</span>
+                    <span class="stat-label">Grusel</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Film-Grid mit 10 Horrorfilmen -->
+        <div class="film-grid">
+            <!-- 1. Компаньон -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://kinogo-films.fm/7957-kompanon.html')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">4K</div>
+                <div class="film-poster companion">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">🤖❤️</div>
+                </div>
+                <div class="film-info">
+                    <h3>Компаньон</h3>
+                    <p class="genre">Thriller • Sci-Fi • Horror</p>
+                    <p class="description">
+                        Eine androide Begleiterin entwickelt Eigenbewusstsein und entfesselt tödliche Instinkte.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="score">7.4</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2. Особо опасный пассажир -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://kinogo.fm/2569-osobo-opasnyj-passazhir-2025.html')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">4K</div>
+                <div class="film-poster flightrisk">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">✈️🔪</div>
+                </div>
+                <div class="film-info">
+                    <h3>Особо опасный пассажир</h3>
+                    <p class="genre">Action • Thriller • Horror</p>
+                    <p class="description">
+                        Ein Attentäter entpuppt sich als Pilot – Nervenkitzel und Gewalt im Absturzchaos.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★☆☆</span>
+                        <span class="score">6.5</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3. Охота на воров 2: Пантера -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://kinogo-films.fm/7588-ohota-na-vorov-2-pantera.html')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">4K</div>
+                <div class="film-poster denofthieves2">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">🦾💎</div>
+                </div>
+                <div class="film-info">
+                    <h3>Охота на воров 2: Пантера</h3>
+                    <p class="genre">Action • Crime • Horror</p>
+                    <p class="description">
+                        Donnie Wilson kollaboriert mit einer kriminellen Bande – brutale Raubzüge in Europa.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="score">7.8</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4. Путь рыцаря -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://kinogo-films.fm/8190-put-rycarja.html')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">4K</div>
+                <div class="film-poster knightspath">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">⚔️🛡️</div>
+                </div>
+                <div class="film-info">
+                    <h3>Путь рыцаря</h3>
+                    <p class="genre">Horror • Fantasy • Action</p>
+                    <p class="description">
+                        Ein Krieger betritt das Schattenreich – Dämonen, Intrigen und epische Kämpfe.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★☆☆</span>
+                        <span class="score">7.1</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 5. Астрал. Могильный ритуал -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://kinogo.eu/21947-astral-mogilnyj-ritual-2025.html')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">4K</div>
+                <div class="film-poster astralritual">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">✝️👻</div>
+                </div>
+                <div class="film-info">
+                    <h3>Астрал. Могильный ритуал</h3>
+                    <p class="genre">Supernatural • Horror</p>
+                    <p class="description">
+                        Beerdigungsrituale entfesseln uralte Dämonen – Alptraum in einem indonesischen Dorf.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="score">7.0</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 6. Чёрные монахини -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://new.kinogo.fm/2626-chernye-monahini-2025.html')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">4K</div>
+                <div class="film-poster blacknuns">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">🖤🙏</div>
+                </div>
+                <div class="film-info">
+                    <h3>Чёрные монахини</h3>
+                    <p class="genre">Exorzism • Horror</p>
+                    <p class="description">
+                        Zwei Exorzistinnen kämpfen gegen einen Dämon in einem südkoreanischen Dorf.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★☆☆</span>
+                        <span class="score">5.8</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 7. Вульфмен -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://kinogo-films.fm/7744-vulfmen.html')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">4K</div>
+                <div class="film-poster wolfman">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">🐺🌕</div>
+                </div>
+                <div class="film-info">
+                    <h3>Вульфмен</h3>
+                    <p class="genre">Werewolf • Horror</p>
+                    <p class="description">
+                        Familienausflug wird zum Überlebenskampf, wenn Vater zum Werwolf mutiert.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="score">5.9</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 8. Ущелье (The Gorge) -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://kinogo.fm/2594-uschele-2025.html')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">4K</div>
+                <div class="film-poster thegorge">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">🏞️🔫</div>
+                </div>
+                <div class="film-info">
+                    <h3>Ущелье (The Gorge)</h3>
+                    <p class="genre">Sci-Fi • Horror • Thriller</p>
+                    <p class="description">
+                        Zwei Scharfschützen erkennen, dass in der Schlucht etwas Übernatürliches lauert.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="score">6.8</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 9. Питер Пэн: Кошмар в Нетландии -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://kinogo-fm.biz/uzhasy/')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">HD</div>
+                <div class="film-poster peterpan">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">🏴‍☠️🌌</div>
+                </div>
+                <div class="film-info">
+                    <h3>Питер Пэн: Кошмар в Нетландии</h3>
+                    <p class="genre">Fantasy • Horror</p>
+                    <p class="description">
+                        Wendy Darling rettet entführte Kinder in einer albtraumhaften Version von Nimmerland.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="score">6.2</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 10. Костяное лицо -->
+            <div 
+                class="film-card premium" 
+                onclick="openFilm('https://kinogo-hd.io/1234-kostyanoe-lico-2025.html')"
+            >
+                <div class="card-glow"></div>
+                <div class="quality-badge">HD</div>
+                <div class="film-poster boneface">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">🔪🎪</div>
+                </div>
+                <div class="film-info">
+                    <h3>Костяное лицо</h3>
+                    <p class="genre">Slasher • Horror</p>
+                    <p class="description">
+                        Ein Camp wird zur Foltergrube – eine maskierte Bestie mordet Jugendliche bei Vollmond.
+                    </p>
+                    <div class="rating">
+                        <span class="stars">★★★☆☆</span>
+                        <span class="score">4.7</span>
+                    </div>
+                    <button class="watch-btn">
+                        Watch Now <i class="btn-icon fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <p>© 2025 MKFILMSHORROR • Nur für Mutige</p>
+                <div class="social-links">
+                    <span class="social-icon">🩸</span>
+                    <span class="social-icon">🔪</span>
+                    <span class="social-icon">👻</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
