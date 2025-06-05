@@ -1,0 +1,604 @@
+:root {
+    --blood-red: #8b0000;
+    --dark-red: #4b0000;
+    --fog-grey: #1a1a1a;
+    --text-primary: #e0e0e0;
+    --text-muted: #888888;
+    --glass-bg: rgba(30, 0, 0, 0.6);
+    --glass-border: rgba(255, 0, 0, 0.2);
+    --shadow-glow: 0 0 60px rgba(139, 0, 0, 0.5);
+    --nebel: rgba(0, 0, 0, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #000000;
+    color: var(--text-primary);
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+}
+
+/* Horror-Nebel-/Blutspritzer-Ebene */
+.horror-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAAAA...'), /* optional: Blut-Spritzer PNG */
+        radial-gradient(circle at center, rgba(27, 0, 0, 0.8), #000 70%);
+    background-size: cover, cover;
+    pointer-events: none;
+    z-index: -3;
+    opacity: 0.6;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.floating-element {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+/* Rote „Glut“-Partikel */
+.floating-element:nth-child(1) {
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, var(--blood-red) 0%, transparent 70%);
+    top: 10%;
+    left: 20%;
+    animation: float1 22s infinite ease-in-out;
+}
+.floating-element:nth-child(2) {
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, var(--dark-red) 0%, transparent 70%);
+    top: 60%;
+    left: 80%;
+    animation: float2 26s infinite ease-in-out;
+}
+.floating-element:nth-child(3) {
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, #800000 0%, transparent 70%);
+    top: 35%;
+    left: 55%;
+    animation: float3 30s infinite ease-in-out;
+}
+.floating-element:nth-child(4) {
+    width: 7px;
+    height: 7px;
+    background: radial-gradient(circle, #660000 0%, transparent 70%);
+    top: 80%;
+    left: 25%;
+    animation: float4 24s infinite ease-in-out;
+}
+.floating-element:nth-child(5) {
+    width: 9px;
+    height: 9px;
+    background: radial-gradient(circle, #4b0000 0%, transparent 70%);
+    top: 50%;
+    left: 45%;
+    animation: float5 18s infinite ease-in-out;
+}
+
+@keyframes float1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.3; }
+    25% { transform: translate(100px, -90px) rotate(90deg) scale(1.3); opacity: 0.6; }
+    50% { transform: translate(-60px, -130px) rotate(180deg) scale(0.7); opacity: 1; }
+    75% { transform: translate(-140px, -50px) rotate(270deg) scale(1.1); opacity: 0.5; }
+}
+@keyframes float2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.3; }
+    33% { transform: translate(-80px, 120px) rotate(120deg) scale(1.2); opacity: 0.7; }
+    66% { transform: translate(90px, -70px) rotate(240deg) scale(0.9); opacity: 0.9; }
+}
+@keyframes float3 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.4; }
+    50% { transform: translate(-220px, 160px) rotate(180deg) scale(1.4); opacity: 0.8; }
+}
+@keyframes float4 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.2; }
+    40% { transform: translate(170px, -110px) rotate(144deg) scale(1.1); opacity: 0.9; }
+    80% { transform: translate(-120px, -160px) rotate(288deg) scale(0.8); opacity: 0.6; }
+}
+@keyframes float5 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.3; }
+    20% { transform: translate(100px, 140px) rotate(72deg) scale(1.2); opacity: 0.7; }
+    60% { transform: translate(-140px, -100px) rotate(216deg) scale(0.9); opacity: 1; }
+}
+
+.grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255,0,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,0,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+    animation: gridMove 50s linear infinite;
+}
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(40px, 40px); }
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 80px;
+    padding: 80px 0;
+    position: relative;
+    z-index: 2;
+}
+.header::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(139,0,0,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 5s ease-in-out infinite;
+    mix-blend-mode: multiply;
+}
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
+}
+
+/* Logo mit Horror-Font */
+.logo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.logo {
+    font-family: 'Creepster', cursive;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--blood-red);
+    text-shadow: 
+        0 0 10px rgba(139,0,0,0.8),
+        0 0 20px rgba(255,0,0,0.6),
+        0 0 30px rgba(255,0,0,0.4);
+    filter: drop-shadow(0 0 10px rgba(255,0,0,0.4));
+    position: relative;
+}
+.logo-underline {
+    height: 6px;
+    background: var(--blood-red);
+    margin-top: 10px;
+    border-radius: 3px;
+    animation: bleed 2s infinite;
+}
+@keyframes bleed {
+    0% { width: 0; opacity: 0; }
+    50% { width: 60%; opacity: 1; }
+    100% { width: 0; opacity: 0; }
+}
+
+/* Tagline in blutigem Rot */
+.tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: #ff4c4c;
+    opacity: 0.9;
+    margin-top: 10px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* HEADER STATS */
+.header-stats {
+    display: flex;
+    justify-content: center;
+    gap: clamp(30px, 8vw, 70px);
+    margin-top: 30px;
+}
+.stat-item {
+    text-align: center;
+    padding: 15px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+.stat-number {
+    display: block;
+    font-family: 'Creepster', cursive;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--blood-red);
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(139,0,0,0.5);
+}
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 5px;
+}
+
+/* FILM GRID */
+.film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+}
+.film-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    text-align: left;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    height: 620px;
+    display: flex;
+    flex-direction: column;
+    transform-style: preserve-3d;
+}
+.film-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 0, 0, 0.15),
+        transparent
+    );
+    transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1;
+}
+.film-card:hover::before {
+    left: 100%;
+}
+.film-card:hover {
+    transform: translateY(-15px) rotateX(3deg) rotateY(3deg) scale(1.02);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.7),
+        0 0 100px rgba(139, 0, 0, 0.5);
+    border-color: rgba(255, 0, 0, 0.6);
+}
+
+/* Rotglühender Rahmen hinter der Karte */
+.card-glow {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(
+        45deg,
+        var(--blood-red),
+        var(--dark-red),
+        #800000,
+        var(--blood-red)
+    );
+    border-radius: 28px;
+    filter: blur(3px);
+    opacity: 0;
+    z-index: -1;
+    animation: rotateGlow 7s linear infinite;
+    transition: opacity 0.5s ease;
+}
+@keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.film-card:hover .card-glow {
+    opacity: 0.7;
+}
+
+/* FILM POSTER */
+.film-poster {
+    height: 320px;
+    border-radius: 25px 25px 0 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+}
+.poster-bg {
+    position: absolute;
+    font-size: 6rem;
+    z-index: 1;
+    text-shadow: 0 0 30px rgba(0,0,0,0.8);
+    filter: drop-shadow(0 0 20px rgba(255,0,0,0.2));
+}
+.poster-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle,
+        rgba(0,0,0,0.5) 0%,
+        rgba(0,0,0,0.9) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 2;
+}
+.film-card:hover .poster-overlay {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+}
+.play-icon {
+    color: #ff0000;
+    font-size: 5rem;
+    text-shadow: 0 0 40px rgba(255,0,0,0.7);
+}
+
+/* POSTER-ANPASSUNGEN */
+.companion    { background: linear-gradient(135deg, #2f001f 0%, #3b002b 50%, #1f000f 100%); }
+.flightrisk   { background: linear-gradient(135deg, #3b0000 0%, #4b0000 50%, #1f0000 100%); }
+.denofthieves2{ background: linear-gradient(135deg, #1f001f 0%, #2e002e 50%, #0f000f 100%); }
+.knightspath  { background: linear-gradient(135deg, #001f00 0%, #002e00 50%, #000f00 100%); }
+.astralritual { background: linear-gradient(135deg, #2f001a 0%, #3e0026 50%, #1f000f 100%); }
+.blacknuns    { background: linear-gradient(135deg, #2f0000 0%, #4b0000 50%, #1f0000 100%); }
+.wolfman      { background: linear-gradient(135deg, #1f1f00 0%, #3b3b00 50%, #0f0f00 100%); }
+.thegorge     { background: linear-gradient(135deg, #1a001a 0%, #2e002e 50%, #0f000f 100%); }
+.peterpan     { background: linear-gradient(135deg, #001f1f 0%, #003b3b 50%, #000f0f 100%); }
+.boneface     { background: linear-gradient(135deg, #1f000f 0%, #3b001b 50%, #0f0007 100%); }
+
+/* FILM INFO */
+.film-info {
+    padding: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+.film-info h3 {
+    font-family: 'Creepster', cursive;
+    font-size: 1.8rem;
+    color: var(--blood-red);
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(255,0,0,0.5);
+}
+.genre {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+}
+.description {
+    color: #d0d0d0;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    flex: 1;
+    font-size: 0.95rem;
+}
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.stars {
+    color: var(--blood-red);
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(255,0,0,0.4);
+}
+.score {
+    background: linear-gradient(
+        135deg,
+        rgba(139,0,0,0.2),
+        rgba(139,0,0,0.1)
+    );
+    color: var(--blood-red);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 1px solid rgba(139,0,0,0.3);
+    backdrop-filter: blur(5px);
+}
+
+/* WATCH BUTTON mit Blut-Effekt */
+.watch-btn {
+    background: linear-gradient(135deg, #4b0000 0%, #8b0000 50%, #4b0000 100%);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 20px;
+    color: #fff;
+    font-family: 'Creepster', cursive;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(139,0,0,0.5);
+}
+.watch-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,0,0,0.4), transparent);
+    transition: left 0.6s ease;
+}
+.watch-btn:hover::before {
+    left: 100%;
+}
+.watch-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 40px rgba(139,0,0,0.7);
+    background: linear-gradient(135deg, #8b0000 0%, #ff0000 50%, #8b0000 100%);
+}
+.btn-icon {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+.watch-btn:hover .btn-icon {
+    transform: translateX(5px);
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid rgba(139, 0, 0, 0.3);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    margin-top: 40px;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.footer-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+.social-icon {
+    font-size: 1.8rem;
+    color: var(--blood-red);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 0 5px rgba(255,0,0,0.7));
+}
+.social-icon:hover {
+    opacity: 1;
+    transform: scale(1.3) rotate(10deg);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1400px) {
+    .film-grid {
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 35px;
+    }
+}
+@media (max-width: 768px) {
+    .header-stats {
+        gap: 15px;
+    }
+    .film-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    .film-card {
+        height: 550px;
+    }
+    .footer-content {
+        flex-direction: column;
+        gap: 25px;
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    .film-card {
+        height: 480px;
+    }
+    .film-info {
+        padding: 20px;
+    }
+    .watch-btn {
+        padding: 10px 22px;
+        font-size: 0.9rem;
+    }
+}
+
+/* LADE-ANIMATION */
+.film-card {
+    opacity: 0;
+    transform: translateY(50px);
+}
+.film-card.animate-in {
+    animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* QUALITY-BADGE */
+.quality-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--blood-red);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(255,0,0,0.6);
+}
